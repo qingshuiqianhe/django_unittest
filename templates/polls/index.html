@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script type="text/javascript">
+    $(function () {
+        $(document).load(function(e) {
+        $('#myDiv1').click();
+        });
+    });
+
+    function loadXMLDoc1() {
+        xmlhttp = new XMLHttpRequest();
+        xmlhttp.open('GET', '/polls/all', true);
+        xmlhttp.send();
+        console.log(xmlhttp);
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                document.getElementById("myDiv1").innerHTML = xmlhttp.responseText;
+            }
+        }
+    }
+</script>
+
+
+
+<body>
+
+<ul>
+    {% for i in output %}
+        <div>
+            <li><a href="/polls/{{ i }}">{{ i }}</a></li>
+        </div>
+    {% endfor %}
+
+</ul>
+
+
+
+<div id="myDiv1" onclick="loadXMLDoc1()">请求数据
+    <ul>
+    {% for i in ques %}
+        <div>
+            <li><a href="/polls/{{ i }}">{{ i }}</a></li>
+        </div>
+    {% endfor %}
+
+</ul>
+</div>
+
+</body>
+</html>
