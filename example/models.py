@@ -31,7 +31,3 @@ class Example(models.Model):
 
     def __unicode__(self):
         return self.zixiang_name.name
-
-
-
-
