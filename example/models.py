@@ -33,3 +33,5 @@ class Example(models.Model):
         return self.zixiang_name.name
 
 
+
+
