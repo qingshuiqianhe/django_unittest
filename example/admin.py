@@ -9,3 +9,5 @@ from .models import *
 admin.site.register(one_model)
 admin.site.register(two_model)
 admin.site.register(Example)
+admin.site.register(reports)
+admin.site.register(reportsIndex)
