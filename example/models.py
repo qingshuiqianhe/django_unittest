@@ -36,8 +36,8 @@ class two_model(models.Model):
         verbose_name_plural = verbose_name
         ordering = ['-id']
 
-    def getAllZiXiang(self, one_model=[]):
-        return two_model.objects.filter(model_name__in=one_model)
+    def getAllZiXiang(self, one_model):
+        return two_model.objects.filter(model_name_id=one_model)
 
     def __unicode__(self):
         return self.name
@@ -53,8 +53,11 @@ class Example(models.Model):
         verbose_name_plural = verbose_name
         ordering = ['-id']
 
-    def getExamples(self, two_model=[]):
-        return Example.objects.filter(zixiang_name_id__in=two_model)
+    def getExamples(self, two_model):
+        return Example.objects.filter(zixiang_name_id=two_model)
+
+    def getListExamples(self, exam=[]):
+        return Example.objects.filter(id in exam)
 
     def __unicode__(self):
         return self.zixiang_name.name + self.examples
