@@ -41,12 +41,13 @@ def getTiaoli(request, two_model):
     return render(request, 'index.html', context)
 
 
+# 新建测试报告
 def createResports(request):
     """前端做好限制，勾选了上级自动勾选所有下级，否则视为单一勾选下级或者下下级"""
     if request.method == 'POST':
         try:
             text_name = request.POST.get('text_name', u'new test')
-            exampleLists = request.POST.get('examples', [])
+            exampleLists = request.POST.get('example_id', [])
         except ValueError as e:
             print e
         reportsIndex.objects.create(text_name=text_name, createUser=request.user)

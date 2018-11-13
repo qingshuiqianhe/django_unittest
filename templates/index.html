@@ -2,9 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>首页</title>
+    <script type="text/javascript">
+        $(function () {
+            $(document).load(function (e) {
+            })
+        });
+
+    </script>
 </head>
 <body>
-1231
+
+
+
+<div id="one_model" onclick="loadzixiang({{ one_model.id }})">
+<ul>
+    {% for one_model in one_models %}
+        <li><a href="/getZixiang/{{ one_model.id }}"></a>{{ one_model }}</li>
+        <ul>
+            {% for one in zixiangs %}
+            <li>{{ one }}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+ </ul>
+</div>
 </body>
 </html>
